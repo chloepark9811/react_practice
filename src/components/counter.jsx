@@ -6,12 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 class Counter extends Component {
     state = {
         count:0,
-
-
     };
-
-
-
 
     styles = {
         fontSize : 10,
@@ -25,7 +20,8 @@ class Counter extends Component {
     //  this.handleIncrement.bind(this);
     // }
 
-    handleIncrement = () =>{
+    handleIncrement = (product) =>{
+        console.log(product)
         this.setState({ count: this.state.count + 1 });
 
         //console.log('Increment Clicked', this);
@@ -33,20 +29,21 @@ class Counter extends Component {
         //function();
     }
 
+    doHandleIncrement = () => {
+        this.handleIncrement({id:1});
+    };
+
     render() {
-
-
         return(
-
             <div>
-            <span className = {this.getBadgeClasses()}>{this.formatCount()}</span>
-            <button onClick={this.handleIncrement} className="btn btn-primary btn-sm">Increment</button>
-
-
-        </div>
+                <span className = {this.getBadgeClasses()}>{this.formatCount()}</span>
+                <button onClick={() => this.handleIncrement()}
+                        className="btn btn-primary btn-sm">Increment</button>
+            </div>
 
         );
     }
+
 
     getBadgeClasses() {
         let classes = "badge m-4 badge- ";
